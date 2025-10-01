@@ -47,8 +47,6 @@ def calculate_statistics(data):
     stats['avg_systolic_bp'] = data['blood_pressure_systolic'].mean()
     stats['avg_glucose'] = data['glucose_level'].mean()
 
-    cat(stats)
-
     return stats
 
 
@@ -101,8 +99,13 @@ def generate_report(stats, abnormal, total_readings):
     # Example: f"Heart Rate: {stats['avg_heart_rate']:.1f} bpm"
     # TODO: Include section headers and labels for readability
     # TODO: Include total_readings, all averages, and all abnormal counts
-    pass
+    report = f"""Analytic report
+{'=' * 40}
+Average statistics:
+    - Heart Rate: {stats['avg_heart_rate']:.1f} bpm
+    """
 
+    return report
 
 def save_report(report, filename):
     """Save report to file.
@@ -114,7 +117,8 @@ def save_report(report, filename):
     # TODO: Write the report to a file using open() with 'w' mode
     # Example: with open(filename, 'w') as f:
     #              f.write(report)
-    pass
+    with open(filename, 'w') as file:
+        file.write(report)
 
 
 def main():
@@ -126,7 +130,12 @@ def main():
     # TODO: Generate report using generate_report()
     # TODO: Save to 'output/analysis_report.txt' using save_report()
     # TODO: Print success message
-    pass
+    data = load_data("health_data.csv")
+    avg_stats = calculate_statistics(data)
+    abn_stats = find_abnormal_readings(data)
+    total_readings = len(data)
+    report = generate_report(avg_stats, abn_stats, total_readings)
+    save_report(report, 'output/analysis_report.txt')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+   Analytic report
+    ========================================
+    Average statistics:
+    - Heart Rate: 80.1 bpm
+    
