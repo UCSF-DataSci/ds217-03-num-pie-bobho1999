@@ -42,7 +42,14 @@ def calculate_statistics(data):
     # TODO: Calculate average systolic BP using data['blood_pressure_systolic'].mean()
     # TODO: Calculate average glucose level using data['glucose_level'].mean()
     # TODO: Return as dictionary with keys: 'avg_heart_rate', 'avg_systolic_bp', 'avg_glucose'
-    pass
+    stats = dict()
+    stats['avg_heart_rate'] = data['heart_rate'].mean()
+    stats['avg_systolic_bp'] = data['blood_pressure_systolic'].mean()
+    stats['avg_glucose'] = data['glucose_level'].mean()
+
+    cat(stats)
+
+    return stats
 
 
 def find_abnormal_readings(data):
@@ -65,8 +72,18 @@ def find_abnormal_readings(data):
     # Example: high_glucose_count = len(data[data['glucose_level'] > 110])
     
     # TODO: Return dictionary with keys: 'high_heart_rate', 'high_blood_pressure', 'high_glucose'
-    pass
+    stats = dict()
 
+    high_hr_count = len(data[data['heart_rate'] > 90])
+    stats['high_heart_rate'] = high_hr_count
+
+    high_bp_count = len(data[data['blood_pressure_systolic'] > 130])
+    stats['high_blood_pressure'] = high_bp_count
+
+    high_glucose_count = len(data[data['glucose_level'] > 110])
+    stats['high_glucose'] = high_glucose_count
+
+    return stats
 
 def generate_report(stats, abnormal, total_readings):
     """Generate formatted analysis report.
