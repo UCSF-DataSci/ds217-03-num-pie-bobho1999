@@ -99,10 +99,21 @@ def generate_report(stats, abnormal, total_readings):
     # Example: f"Heart Rate: {stats['avg_heart_rate']:.1f} bpm"
     # TODO: Include section headers and labels for readability
     # TODO: Include total_readings, all averages, and all abnormal counts
-    report = f"""Analytic report
+    report = f"""Health Sensor Data Analysis Report
 {'=' * 40}
-Average statistics:
-    - Heart Rate: {stats['avg_heart_rate']:.1f} bpm
+
+Dataset Summary:
+- Total readings: {total_readings:.0f}
+
+Average Measurements:
+- Heart Rate: {stats['avg_heart_rate']:.1f} bpm
+- Systolic BP: {stats['avg_systolic_bp']:.1f} mmHg
+- Glucose Level: {stats['avg_glucose']:.1f} mg/dL
+
+Abnormal Readings:
+ - High Heart Rate (>90): {abnormal['high_heart_rate']:.0f} readings
+ - High Blood Pressure (>130): {abnormal['high_blood_pressure']:.0f} readings
+ - High Glucose (>110): {abnormal['high_glucose']:.0f} readings
     """
 
     return report
