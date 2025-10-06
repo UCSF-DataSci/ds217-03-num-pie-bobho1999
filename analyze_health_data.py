@@ -147,6 +147,7 @@ def main():
     total_readings = len(data)
     report = generate_report(avg_stats, abn_stats, total_readings)
     save_report(report, 'output/analysis_report.txt')
+    print("Report successfully generated!")
 
 
 if __name__ == "__main__":
